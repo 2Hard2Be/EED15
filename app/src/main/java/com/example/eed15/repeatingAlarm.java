@@ -27,6 +27,7 @@ public class repeatingAlarm extends Activity {
 //    Falta crear la clase notificacion (tendria que ser el intent que llame la notificacion de la barra)
     Intent intentNotification = new Intent(repeatingAlarm.this, notificacion.class);
 
+
 //    Falta usar el pending intent, contexto repeatingAlarm y llamara al intentNotification que debera
 //    invocar la notificacion en la barra de tareas
     PendingIntent pendingIntentNoti = PendingIntent.getService(repeatingAlarm.this,0,intentNotification,0);
