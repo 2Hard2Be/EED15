@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".repeatingAlarm"></activity>
+        <service android:name=".repeatingAlarm"></service>
         <activity android:name=".notificacion"></activity>
     </application>
 

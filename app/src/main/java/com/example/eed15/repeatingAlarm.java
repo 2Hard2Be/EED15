@@ -3,7 +3,9 @@ package com.example.eed15;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.Fragment;
+import android.app.IntentService;
 import android.app.PendingIntent;
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -18,14 +20,21 @@ import java.util.Calendar;
 // DEBE SER SUBCLASE DE ACTIVITY O NO (PUES CORRE EN BACKGROUND NO SE PODRA INTERACTUAR CON ELLA)
 //    PROBABLEMENTE NO LLEVE EXTENDS
 
-public class repeatingAlarm extends Activity {
+public class repeatingAlarm extends IntentService {
+
+    public repeatingAlarm(){
+
+        super("repeatingAlarm");
+    }
 
 @Override
 
 //ATENCION REVISAR SI REALMENTE FUNCIONA: AL DAR ONCREATE CREAR LOS INTENTS Y LA ALARMA?? O SERA
 //MEJOR REVISAR SI NO HA SIDO CREADA ANTES (PROBABLEMENTE ESTE CORRECTO SOLO HEADS UP
-    public void onCreate (Bundle savedInstanceState){
-    super.onCreate(savedInstanceState);
+
+
+    protected void onHandleIntent (Intent intent){
+
 
 
 
@@ -41,7 +50,7 @@ public class repeatingAlarm extends Activity {
 //Inicializando objeto del tipo alarma...beeep....beeep
 
    int alarmType = AlarmManager.ELAPSED_REALTIME;
-    final int FIFTEEN_SEC_MILLIS = 10000;
+    final int FIFTEEN_SEC_MILLIS = 20000;
     AlarmManager alarmManager = (AlarmManager)
 
 //            ATENCION AQUI MODIFIQUE Y QUITE EL REPEATING ALARM COMO CONTEXTO
@@ -49,25 +58,9 @@ public class repeatingAlarm extends Activity {
     alarmManager.setRepeating(alarmType, SystemClock.elapsedRealtime() + FIFTEEN_SEC_MILLIS,
             FIFTEEN_SEC_MILLIS, pendingIntentNoti);
 
-    Toast.makeText(repeatingAlarm.this,"Alarma 10 segundos",Toast.LENGTH_SHORT).show();
-
-//    Creando un objeto de la clase Calendar para determinar la fecha actual en la app, AHUUUU!!!
+    Toast.makeText(repeatingAlarm.this,"Alarma 20 segundos",Toast.LENGTH_SHORT).show();
 
 
-
-//    PARA FINES DE PRUEBA SE AJUSTO EL CALENDARIO A SUMAR 10 SEGUNDOS A LA HORA ACTUAL
-//    EN EL PROGRAMA DEBERAS ECONTRAR LA FORMA DE QUE LLEGUE A LA MISMA HORA DEL DIA PARA EL CASO
-//    6:00 AM O 12:00 AM
-
-
-
-//    Este Toast solo es para indicar que la alarma ya esta hecha, para el mero programa
-//    tu decides si se queda o no
-
-
-
-//APARENTEMENTE YA ESTA HECHA LA ALARMA
-//SIGUIENTE PASO CREAR LA CLASE notificacion EN UN NUEVO JAVA
 
 }
 

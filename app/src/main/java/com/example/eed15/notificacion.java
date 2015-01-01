@@ -86,7 +86,8 @@ public class notificacion extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sapito();
-        Toast.makeText(notificacion.this, "10 segundos", Toast.LENGTH_LONG).show();
+        Toast.makeText(notificacion.this, "Ya pasaron 20 segundos", Toast.LENGTH_LONG).show();
+        moveTaskToBack(true);
     }
 
 }

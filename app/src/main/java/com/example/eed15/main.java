@@ -10,7 +10,7 @@ public class main extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent trigger = new Intent(main.this,repeatingAlarm.class);
-        startActivity(trigger);
+        startService(trigger);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
