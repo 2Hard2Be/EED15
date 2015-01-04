@@ -1,17 +1,17 @@
 package com.example.eed15;
 
-import android.app.Activity;
+
 import android.app.AlarmManager;
-import android.app.Fragment;
+
 import android.app.IntentService;
 import android.app.PendingIntent;
-import android.app.Service;
+
 import android.content.Intent;
-import android.os.Bundle;
+
 import android.os.SystemClock;
-import android.view.MenuItem;
+
 import android.widget.Toast;
-import java.util.Calendar;
+
 
 /**
  * Created by Peto-1 on 12/28/2014.

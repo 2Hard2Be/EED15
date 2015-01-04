@@ -17,4 +17,6 @@
     </string>
 
     <string name = "intro_message">"Hola"</string>
+
+    <string name = "boton">"Leido"</string>
 </resources>
