@@ -12,6 +12,8 @@ import android.os.SystemClock;
 
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 
 /**
  * Created by Peto-1 on 12/28/2014.
@@ -49,19 +51,80 @@ public class repeatingAlarm extends IntentService {
 //    Aqui crea el alarmManager, guiate segun la pagina web android-er y los ejemlos
 //Inicializando objeto del tipo alarma...beeep....beeep
 
-   int alarmType = AlarmManager.ELAPSED_REALTIME;
-    final int FIFTEEN_SEC_MILLIS = 20000;
-    AlarmManager alarmManager = (AlarmManager)
+    Calendar now = Calendar.getInstance();
+    Calendar alarma = Calendar.getInstance();
+
+    alarma.set(Calendar.MILLISECOND, 0);
+    alarma.set(Calendar.SECOND, 0);
+    alarma.set(Calendar.MINUTE, 0);
+    alarma.set(Calendar.HOUR_OF_DAY, 6);
+
+    int horaactual = now.get(Calendar.HOUR_OF_DAY);
+    int minutoactual = now.get(Calendar.MINUTE);
+    int horaset = alarma.get(Calendar.HOUR_OF_DAY);
+
+    if (horaactual == horaset) {
+        int calculohora = 12;
+        int millecminus = minutoactual*60*1000;
+        int millisectoplay = (calculohora * 60*60*1000)-millecminus;
+        final int FIFTEEN_SEC_MILLIS = millisectoplay;
+        int alarmType = AlarmManager.ELAPSED_REALTIME;
+
+        AlarmManager alarmManager = (AlarmManager)
 
 //            ATENCION AQUI MODIFIQUE Y QUITE EL REPEATING ALARM COMO CONTEXTO
-            getSystemService(repeatingAlarm.ALARM_SERVICE);
-    alarmManager.setRepeating(alarmType, SystemClock.elapsedRealtime() + FIFTEEN_SEC_MILLIS,
-            FIFTEEN_SEC_MILLIS, pendingIntentNoti);
+                getSystemService(repeatingAlarm.ALARM_SERVICE);
+        alarmManager.setRepeating(alarmType, SystemClock.elapsedRealtime() + FIFTEEN_SEC_MILLIS,
+                FIFTEEN_SEC_MILLIS, pendingIntentNoti);
 
-    Toast.makeText(repeatingAlarm.this,"Alarma 20 segundos",Toast.LENGTH_SHORT).show();
+        Toast.makeText(repeatingAlarm.this,"Alarma 20 segundos",Toast.LENGTH_SHORT).show();
+
+}
+
+    else {
 
 
+        int calculohora = horaset - horaactual;
 
+        if (calculohora < 0) {
+
+            int calculohora2 = horaactual - horaset;
+            int calculohora3 = 24 - calculohora2;
+            int millecminus = minutoactual*60*1000;
+            int millisectoplay = (calculohora3 * 60*60*1000)-millecminus;
+            final int FIFTEEN_SEC_MILLIS = millisectoplay;
+
+            int alarmType = AlarmManager.ELAPSED_REALTIME;
+
+            AlarmManager alarmManager = (AlarmManager)
+
+//            ATENCION AQUI MODIFIQUE Y QUITE EL REPEATING ALARM COMO CONTEXTO
+                    getSystemService(repeatingAlarm.ALARM_SERVICE);
+            alarmManager.setRepeating(alarmType, SystemClock.elapsedRealtime() + FIFTEEN_SEC_MILLIS,
+                    FIFTEEN_SEC_MILLIS, pendingIntentNoti);
+
+            Toast.makeText(repeatingAlarm.this, "Alarma 20 segundos", Toast.LENGTH_SHORT).show();
+        } else {
+
+            int calculohora4 = horaset - horaactual;
+            int millecminus = minutoactual*60*1000;
+            int millisectoplay = (calculohora4 * 60*60*1000)-millecminus;
+            final int FIFTEEN_SEC_MILLIS = millisectoplay;
+
+            int alarmType = AlarmManager.ELAPSED_REALTIME;
+
+            AlarmManager alarmManager = (AlarmManager)
+
+//            ATENCION AQUI MODIFIQUE Y QUITE EL REPEATING ALARM COMO CONTEXTO
+                    getSystemService(repeatingAlarm.ALARM_SERVICE);
+            alarmManager.setRepeating(alarmType, SystemClock.elapsedRealtime() + FIFTEEN_SEC_MILLIS,
+                    FIFTEEN_SEC_MILLIS, pendingIntentNoti);
+
+            Toast.makeText(repeatingAlarm.this, "Alarma 20 segundos", Toast.LENGTH_SHORT).show();
+
+
+        }
+    }
 }
 
 }
